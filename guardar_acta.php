@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_POST['adquisicion'], $_POST['tipo_usuario'], $_POST['folio']
     );
     if ($stmt->execute()) {
-        header("Location: index.php");
+        header("Location: index.php?saved=true");
     } else {
         echo "Error al guardar el acta.";
     }

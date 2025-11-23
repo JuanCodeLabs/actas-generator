@@ -26,6 +26,42 @@ $result = $conexion->query($sql);
     <title>Generador de actas</title>
     <link rel="shortcut icon" href="favicon.png" />
     <link rel="stylesheet" href="style.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('saved') && urlParams.get('saved') === 'true') {
+                showToast('¡Acta guardada exitosamente!');
+                // Clean up the URL
+                const cleanUrl = window.location.pathname;
+                window.history.replaceState({}, document.title, cleanUrl);
+            }
+        });
+
+        function showToast(message) {
+            // Remove any existing toast
+            const existingToast = document.querySelector('.toast');
+            if (existingToast) {
+                existingToast.remove();
+            }
+
+            // Create and show new toast
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            // Trigger the show animation
+            setTimeout(() => toast.classList.add('show'), 10);
+
+            // Auto-hide after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                toast.classList.add('hide');
+                // Remove from DOM after animation
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+    </script>
 </head>
 <body>
 <div class="container">
