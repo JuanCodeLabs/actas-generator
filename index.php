@@ -72,13 +72,13 @@ $result = $conexion->query($sql);
         <div class="grid">
             <div><label>Fecha Creación</label><input type="date" name="fecha_creacion" required></div>
             <div><label>Código tarjeta</label><input type="text" name="codigo_tarjeta" placeholder="Código tarjeta" required></div>
-            <div><label>Rut</label><input type="text" name="rut" placeholder="Rut"></div>
-            <div><label>Nombre Apellido</label><input type="text" name="nombre" placeholder="Nombre Apellido"></div>
-            <div><label>Unidad</label><input type="text" name="unidad" placeholder="Unidad"></div>
-            <div><label>Email</label><input type="email" name="email" placeholder="Email"></div>
-            <div><label>¿Quién solicita?</label><input type="text" name="solicita" placeholder="¿Quién solicita?"></div>
-            <div><label>Patente o NA</label><input type="text" name="patente" placeholder="Patente o NA"></div>
-            <div><label>Fono</label><input type="text" name="fono" placeholder="Fono"></div>
+            <div><label>Rut</label><input type="text" name="rut" placeholder="Rut" required></div>
+            <div><label>Nombre Apellido</label><input type="text" name="nombre" placeholder="Nombre Apellido" required></div>
+            <div><label>Unidad</label><input type="text" name="unidad" placeholder="Unidad" required></div>
+            <div><label>Email</label><input type="email" name="email" placeholder="Email" required></div>
+            <div><label>¿Quién solicita?</label><input type="text" name="solicita" placeholder="¿Quién solicita?" required></div>
+            <div><label>Patente o NA</label><input type="text" name="patente" placeholder="Patente o NA" required></div>
+            <div><label>Fono</label><input type="text" name="fono" placeholder="Fono" required></div>
             <div><label>Adquisición de tarjeta por...</label>
                 <select name="adquisicion">
                     <option value="">Seleccionar</option>
@@ -91,6 +91,7 @@ $result = $conexion->query($sql);
                 <select name="tipo_usuario">
                     <option value="">Seleccionar</option>
                     <option value="Honorario">Honorario</option>
+                    <option value="Titular">Titular</option>
                     <option value="Becado">Becado</option>
                     <option value="Contrata">Contrata</option>
                     <option value="Suplente">Suplente</option>

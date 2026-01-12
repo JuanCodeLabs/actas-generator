@@ -112,7 +112,7 @@ $pdf->Cell(70,5,utf8_decode("Hospital Dr. Gustavo Fricke"),0,2,'C');
 // Fecha centrada abajo
 $pdf->SetY(270);
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(0,6,utf8_decode("Viña del Mar, " . date('j \d\e F \d\e Y', strtotime($acta['fecha_creacion']))),0,1,'C');
+$pdf->Cell(0,6,utf8_decode("Viña del Mar,  " . date('j \d\e F \d\e Y', strtotime($acta['fecha_creacion']))),0,1,'C');
 
-$pdf->Output("I", "Acta_$usuario _$codigo.pdf");
+$pdf->Output("I", "$codigo _ $usuario .pdf");
 ?>
