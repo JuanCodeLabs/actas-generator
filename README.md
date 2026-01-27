@@ -10,6 +10,10 @@ Un simple creador de archivos PDF para la gestión de actas de entrega de tarjet
 - **Base de datos**: Almacenamiento persistente de todos los registros
 - **Interfaz responsive**: Diseño adaptable a diferentes dispositivos
 
+## Previsualización
+
+![Preview](./preview.png)
+
 ## 📋 Requisitos
 
 - PHP 7.0 o superior
