@@ -13,5 +13,6 @@ CREATE TABLE actas (
     fono VARCHAR(50),
     adquisicion VARCHAR(50),
     tipo_usuario VARCHAR(50),
-    folio VARCHAR(50)
+    folio VARCHAR(50),
+    ingresado BOOLEAN
 );

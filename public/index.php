@@ -1,5 +1,5 @@
 <?php
-require_once 'conexion.php';
+require_once '../src/conexion.php';
 
 // --- Filtro de búsqueda ---
 $codigo = $_GET['codigo'] ?? '';
@@ -20,7 +20,7 @@ $result = $conexion->query($sql);
 <head>
     <meta charset="UTF-8">
     <title>Generador de actas</title>
-    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="shortcut icon" href="../favicon.ico" />
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
@@ -29,7 +29,7 @@ $result = $conexion->query($sql);
     <h2>Generador de actas</h2>
 
     <!-- Formulario de creación -->
-    <form action="guardar_acta.php" method="POST" class="formulario">
+    <form action="../src/guardar_acta.php" method="POST" class="formulario">
         <div class="grid">
             <div><label>Fecha Creación</label><input type="date" name="fecha_creacion" required></div>
             <div><label>Código tarjeta</label><input type="text" name="codigo_tarjeta" placeholder="Código tarjeta" required></div>
@@ -127,7 +127,7 @@ $result = $conexion->query($sql);
                                        onchange="confirmarCambio(this)">
                             </td>
                             <td>
-                                <a href="generar_pdf.php?id=<?php echo $fila['id']; ?>" 
+                                <a href="../src/generar_pdf.php?id=<?php echo $fila['id']; ?>" 
                                 target="_blank" 
                                 class="btn-icon" 
                                 title="Generar PDF">🧾</a>

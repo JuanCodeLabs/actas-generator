@@ -1,0 +1,40 @@
+# Ignorar archivos y carpetas comunes
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos de logs
+logs/
+*.log
+
+# Archivos temporales
+tmp/
+temp/
+cache/
+
+# Archivos de configuración locales
+.env
+.env.local
+.env.*.local
+
+# Archivos de Docker (volúmenes)
+db_data/
+
+# Archivos de backup
+*.bak
+*.backup
+
+# Archivos compilados
+*.class
+*.o
+
+# Documentación generada
+docs/_build/
+site/

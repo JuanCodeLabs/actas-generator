@@ -1,10 +1,6 @@
 <?php
-require('fpdf/fpdf.php');
-
-$conexion = new mysqli("localhost", "root", "", "actas_db");
-if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
-}
+require('../public/fpdf/fpdf.php');
+require_once 'conexion.php';
 
 $id = intval($_GET['id']);
 $sql = "SELECT * FROM actas WHERE id = $id";
@@ -26,7 +22,7 @@ $pdf->AddPage();
 $pdf->SetFont('Arial','',11);
 
 // Logo
-$pdf->Image('images/logo-hospital.png',10,8,25);
+$pdf->Image('../public/images/logo-hospital.png',10,8,25);
 $pdf->Ln(8);
 
 $pdf->Cell(0,8,utf8_decode('CONTROL CENTRALIZADO'),0,1,'C');
@@ -93,7 +89,7 @@ $pdf->Ln(15);
 $y_firma = 220; // posición vertical en la hoja
 
 // Firma del jefe (izquierda)
-$pdf->Image('images/firma-jefe.png', 30, $y_firma, 50);
+$pdf->Image('../public/images/firma-jefe.png', 30, $y_firma, 50);
 $pdf->SetXY(25, $y_firma + 25);
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(70,6,utf8_decode("IGNACIO DOLHATZ CONTRERAS"),0,2,'C');
