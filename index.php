@@ -80,7 +80,7 @@ $result = $conexion->query($sql);
             <div><label>Patente o NA</label><input type="text" name="patente" placeholder="Patente o NA" required></div>
             <div><label>Fono</label><input type="text" name="fono" placeholder="Fono" required></div>
             <div><label>Adquisición de tarjeta por...</label>
-                <select name="adquisicion">
+                <select name="adquisicion" required>
                     <option value="">Seleccionar</option>
                     <option value="Nueva">Nueva</option>
                     <option value="Compra">Compra</option>
@@ -88,7 +88,7 @@ $result = $conexion->query($sql);
                 </select>
             </div>
             <div><label>Tipo usuario</label>
-                <select name="tipo_usuario">
+                <select name="tipo_usuario" required>
                     <option value="">Seleccionar</option>
                     <option value="Honorario">Honorario</option>
                     <option value="Titular">Titular</option>
@@ -126,6 +126,7 @@ $result = $conexion->query($sql);
                 <th>N° Tarjeta</th>
                 <th>Fecha</th>
                 <th>Rut</th>
+                <th>Folio</th>
                 <th>Nombre</th>
                 <th>Unidad</th>
                 <th>Solicitó</th>
@@ -145,6 +146,7 @@ $result = $conexion->query($sql);
                             <td><?php echo $fila['codigo_tarjeta']; ?></td>
                             <td><?php echo $fila['fecha_creacion']; ?></td>
                             <td><?php echo $fila['rut']; ?></td>
+                            <td><?php echo $fila['folio']; ?></td>
                             <td><?php echo $fila['nombre']; ?></td>
                             <td><?php echo $fila['unidad']; ?></td>
                             <td><?php echo $fila['solicita']; ?></td>
