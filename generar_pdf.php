@@ -7,8 +7,10 @@ if ($conexion->connect_error) {
 }
 
 $id = intval($_GET['id']);
-$sql = "SELECT * FROM actas WHERE id = $id";
-$result = $conexion->query($sql);
+$stmt = $conexion->prepare("SELECT * FROM actas WHERE id = ?");
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$result = $stmt->get_result();
 if ($result->num_rows == 0) {
     die("Acta no encontrada");
 }
@@ -115,4 +117,7 @@ $pdf->SetFont('Arial','',10);
 $pdf->Cell(0,6,utf8_decode("Viña del Mar,  " . date('j \d\e F \d\e Y', strtotime($acta['fecha_creacion']))),0,1,'C');
 
 $pdf->Output("I", "$codigo _ $usuario .pdf");
+
+$stmt->close();
+$conexion->close();
 ?>

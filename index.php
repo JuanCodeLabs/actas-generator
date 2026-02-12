@@ -11,12 +11,17 @@ $nombre = $_GET['nombre'] ?? '';
 $modo_busqueda = false;
 
 if (!empty($codigo) || !empty($nombre)) {
-    $sql = "SELECT * FROM actas WHERE codigo_tarjeta LIKE '%$codigo%' AND nombre LIKE '%$nombre%' ORDER BY id DESC";
+    $stmt = $conexion->prepare("SELECT * FROM actas WHERE codigo_tarjeta LIKE ? AND nombre LIKE ? ORDER BY id DESC");
+    $codigo_param = "%" . $codigo . "%";
+    $nombre_param = "%" . $nombre . "%";
+    $stmt->bind_param("ss", $codigo_param, $nombre_param);
+    $stmt->execute();
+    $result = $stmt->get_result();
     $modo_busqueda = true;
 } else {
     $sql = "SELECT * FROM actas ORDER BY id DESC LIMIT 30";
+    $result = $conexion->query($sql);
 }
-$result = $conexion->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -35,9 +40,17 @@ $result = $conexion->query($sql);
                 const cleanUrl = window.location.pathname;
                 window.history.replaceState({}, document.title, cleanUrl);
             }
+            
+            if (urlParams.has('error') && urlParams.get('error') === 'true') {
+                const errorMsg = urlParams.get('msg') || 'Error al procesar el formulario';
+                showToast('Error: ' + decodeURIComponent(errorMsg), 'error');
+                // Clean up the URL
+                const cleanUrl = window.location.pathname;
+                window.history.replaceState({}, document.title, cleanUrl);
+            }
         });
 
-        function showToast(message) {
+        function showToast(message, type = 'success') {
             // Remove any existing toast
             const existingToast = document.querySelector('.toast');
             if (existingToast) {
@@ -46,7 +59,7 @@ $result = $conexion->query($sql);
 
             // Create and show new toast
             const toast = document.createElement('div');
-            toast.className = 'toast';
+            toast.className = 'toast' + (type === 'error' ? ' error' : '');
             toast.textContent = message;
             document.body.appendChild(toast);
 
@@ -164,12 +177,18 @@ $result = $conexion->query($sql);
                 <?php
                     }
                 } else {
-                    echo "<tr><td colspan='11'>No hay registros para mostrar</td></tr>";
+                    echo "<tr><td colspan='12'>No hay registros para mostrar</td></tr>";
                 }
                 ?>
-
         </tbody>
     </table>
 </div>
 </body>
 </html>
+<?php
+// Close database connection
+if (isset($stmt)) {
+    $stmt->close();
+}
+$conexion->close();
+?>
