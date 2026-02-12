@@ -10,12 +10,16 @@ Un simple creador de archivos PDF para la gestión de actas de entrega de tarjet
 - **Base de datos**: Almacenamiento persistente de todos los registros
 - **Interfaz responsive**: Diseño adaptable a diferentes dispositivos
 
+## Previsualización
+
+![Preview](./preview.png)
+
 ## 📋 Requisitos
 
 - PHP 7.0 o superior
 - MySQL/MariaDB
 - Servidor web (Apache, Nginx, etc.)
-- Extensión FPDF para generación de PDF
+- Extensión FPDF para generación de PDF (instalada por defecto)
 
 ## 🛠️ Instalación
 
@@ -120,10 +124,6 @@ Las contribuciones son bienvenidas para fines educativos. Por favor:
 - Mantener el propósito educativo del proyecto
 - Respetar las restricciones de uso de elementos institucionales
 - Documentar adecuadamente los cambios propuestos
-
-## 📞 Contacto
-
-Para consultas educativas o académicas sobre este proyecto, contactar a través de los canales oficiales del Hospital Dr. Gustavo Fricke.
 
 ---
 
