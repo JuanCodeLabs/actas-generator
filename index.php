@@ -186,9 +186,8 @@ if (!empty($codigo) || !empty($nombre)) {
 </body>
 </html>
 <?php
-// Close database connection
 if (isset($stmt)) {
     $stmt->close();
 }
-$conexion->close();
+    $conexion->close();
 ?>
