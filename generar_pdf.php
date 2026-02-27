@@ -24,7 +24,7 @@ $pdf->AddPage();
 $pdf->SetFont('Arial','',11);
 
 // Logo
-$pdf->Image('images/logo-hospital.png',10,8,25);
+$pdf->Image('images/logo.png',10,8,25);
 $pdf->Ln(8);
 
 $pdf->Cell(0,8,utf8_decode('CONTROL CENTRALIZADO'),0,1,'C');
@@ -91,13 +91,13 @@ $pdf->Ln(15);
 $y_firma = 220; // posición vertical en la hoja
 
 // Firma del jefe (izquierda)
-$pdf->Image('images/firma-jefe.png', 30, $y_firma, 50);
+$pdf->Image('images/firma.png', 30, $y_firma, 50);
 $pdf->SetXY(25, $y_firma + 25);
 $pdf->SetFont('Arial','B',10);
-$pdf->Cell(70,6,utf8_decode("IGNACIO DOLHATZ CONTRERAS"),0,2,'C');
+$pdf->Cell(70,6,utf8_decode("NOMBRE DE EJEMPLO"),0,2,'C');
 $pdf->SetFont('Arial','',9);
-$pdf->Cell(70,5,utf8_decode("JEFE CONTROL CENTRALIZADO"),0,2,'C');
-$pdf->Cell(70,5,utf8_decode("Hospital Dr. Gustavo Fricke"),0,2,'C');
+$pdf->Cell(70,5,utf8_decode("JEFE"),0,2,'C');
+$pdf->Cell(70,5,utf8_decode("EMPRESA EJEMPLO"),0,2,'C');
 
 // Firma del usuario (derecha)
 $pdf->SetXY(125, $y_firma + 25);
@@ -105,7 +105,7 @@ $pdf->SetFont('Arial','B',10);
 $pdf->Cell(70,6,utf8_decode(strtoupper($usuario)),0,2,'C');
 $pdf->SetFont('Arial','',9);
 $pdf->Cell(70,5,utf8_decode("FUNCIONARIO / USUARIO"),0,2,'C');
-$pdf->Cell(70,5,utf8_decode("Hospital Dr. Gustavo Fricke"),0,2,'C');
+$pdf->Cell(70,5,utf8_decode("EMPRESA EJEMPLO"),0,2,'C');
 
 // Fecha centrada abajo
 $pdf->SetY(270);
