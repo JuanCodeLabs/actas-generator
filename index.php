@@ -1,9 +1,5 @@
 <?php
-// Conexión a la base de datos
-$conexion = new mysqli("localhost", "root", "", "actas_db");
-if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
-}
+include_once('conexion.php');
 
 // --- Filtro de búsqueda ---
 $codigo = $_GET['codigo'] ?? '';

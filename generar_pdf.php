@@ -1,10 +1,6 @@
 <?php
 require('fpdf/fpdf.php');
-
-$conexion = new mysqli("localhost", "root", "", "actas_db");
-if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
-}
+include_once('conexion.php');
 
 $id = intval($_GET['id']);
 $stmt = $conexion->prepare("SELECT * FROM actas WHERE id = ?");

@@ -1,4 +1,6 @@
 <?php
+include_once('conexion.php');
+
 function validarRUT($rut) {
     if (!preg_match('/^[0-9]+-[0-9kK]$/', $rut)) {
         return false;
@@ -8,11 +10,6 @@ function validarRUT($rut) {
 
 function validarEmail($email) {
     return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
-}
-
-$conexion = new mysqli("localhost", "root", "", "actas_db");
-if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
