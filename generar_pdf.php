@@ -112,7 +112,7 @@ $pdf->SetY(270);
 $pdf->SetFont('Arial','',10);
 $pdf->Cell(0,6,utf8_decode("Viña del Mar,  " . date('j \d\e F \d\e Y', strtotime($acta['fecha_creacion']))),0,1,'C');
 
-$pdf->Output("I", "$codigo _ $usuario .pdf");
+$pdf->Output("I", "$codigo _$usuario.pdf");
 
 $stmt->close();
 $conexion->close();
