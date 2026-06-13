@@ -1,12 +1,13 @@
 <?php
 // Configuración de la base de datos
-$host = "localhost";
+$host = "127.0.0.1";
 $usuario = "root";
 $password = "";
 $database = "actas_db";
+$port = 3306;
 
 // Crear conexión
-$conexion = new mysqli($host, $usuario, $password, $database);
+$conexion = new mysqli($host, $usuario, $password, $database, $port);
 
 // Verificar conexión
 if ($conexion->connect_error) {
