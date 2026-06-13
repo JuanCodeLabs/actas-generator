@@ -4,13 +4,15 @@ include_once('conexion.php');
 // --- Filtro de búsqueda ---
 $codigo = $_GET['codigo'] ?? '';
 $nombre = $_GET['nombre'] ?? '';
+$folio = $_GET['folio'] ?? '';
 $modo_busqueda = false;
 
-if (!empty($codigo) || !empty($nombre)) {
-    $stmt = $conexion->prepare("SELECT * FROM actas WHERE codigo_tarjeta LIKE ? AND nombre LIKE ? ORDER BY id DESC");
+if (!empty($codigo) || !empty($nombre) || !empty($folio)) {
+    $stmt = $conexion->prepare("SELECT * FROM actas WHERE codigo_tarjeta LIKE ? AND nombre LIKE ? AND folio LIKE ? ORDER BY id DESC");
     $codigo_param = "%" . $codigo . "%";
     $nombre_param = "%" . $nombre . "%";
-    $stmt->bind_param("ss", $codigo_param, $nombre_param);
+    $folio_param = "%" . $folio . "%";
+    $stmt->bind_param("sss", $codigo_param, $nombre_param, $folio_param);
     $stmt->execute();
     $result = $stmt->get_result();
     $modo_busqueda = true;
@@ -120,6 +122,7 @@ if (!empty($codigo) || !empty($nombre)) {
     <form method="GET" class="busqueda">
         <input type="text" name="codigo" placeholder="Código tarjeta" value="<?= htmlspecialchars($codigo) ?>">
         <input type="text" name="nombre" placeholder="Nombre Apellido" value="<?= htmlspecialchars($nombre) ?>">
+        <input type="text" name="folio" placeholder="Folio" value="<?= htmlspecialchars($folio) ?>">
         <button type="submit" class="btn">Buscar</button>
 
         <?php if ($modo_busqueda): ?>
